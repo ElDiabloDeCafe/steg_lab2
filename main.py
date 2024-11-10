@@ -58,12 +58,9 @@ def modify_reserved_and_save(input_file_path, output_file_path, new_reserved_tex
     dib_fields[7] = new_x_text
     dib_fields[8] = new_y_text
 
-    # Открываем новый файл для записи
     with open(output_file_path, 'wb') as bmp_file:
-        # Записываем измененные заголовки
         write_bmp_headers(bmp_file, header_fields, dib_fields)
 
-        # Копируем данные изображения
         with open(input_file_path, 'rb') as input_file:
             input_file.seek(54)
             bmp_data = input_file.read()
