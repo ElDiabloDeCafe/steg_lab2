@@ -33,7 +33,7 @@ def text_to_ascii_decimal(text):
     if len(text) > 12:
         raise ValueError("Текст должен быть не длиннее 12 символов.")
     ascii_values = ''.join(str(ord(char)) for char in text)
-    print (int(ascii_values))
+    #print (int(ascii_values))
     return int(ascii_values)
 
 def ascii_decimal_to_text(ascii_value, length):
@@ -89,7 +89,7 @@ def decode (input_file_path):
     print(f"Полученный текст:{final_text}")
 
 
-action = input("Выберите действие (encode/decode): ").strip().lower()
+action = input("Выберите действие (encode/decode/psnr): ").strip().lower()
 
 if action == "encode":
     new_reserved_text = input("Введите текст для сокрытия (не более 12 символов): ")
@@ -109,6 +109,8 @@ if action == "encode":
 elif action == "decode":
     input_file_path = utilities.open_file_dialog("Выберите BMP файл для декодирования")
     decode(input_file_path)
+elif action == "psnr":
+    utilities.open_and_compare_images()
 else:
     print("Неверное действие. Пожалуйста, выберите 'encode' или 'decode'.")
 
